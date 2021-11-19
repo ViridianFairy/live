@@ -48,7 +48,7 @@ dvr {
 前端在```./push/ustc-live```下，用 react hooks + flv.js + antd 编写
 启动：cd到前端根目录，```npm install``，然后```npm start```即可，打包编译```npm build```
 
-
+前端已经部署到[http://pass.funx.work/](http://pass.funx.work/)，点击即可观看
 
 
 ## 4. 附录
