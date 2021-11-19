@@ -6,7 +6,7 @@
 
 ### 推流本地视频
 ```
-ffmpeg -re -stream_loop -1 -i ./push/rabbit.mp4 -f flv -vcodec libx264 rtmp://funx.work:1935/live/livestream
+ffmpeg -re -stream_loop -1 -i ./push/shot.mp4 -f flv -vcodec libx264 rtmp://funx.work:1935/live/livestream
 ```
 ```-re```用于实时输出
 ```-i```指定输入
@@ -23,18 +23,19 @@ ffmpeg -f dshow -i video="HD WebCam" -framerate 25 -bufsize 1000000k -vcodec lib
 
 ## 2.服务器部署
 部署略，跟PDF一致
+### Docker启动
 首先```docker stats```记录下容器名称，
 启动容器```docker run -itd -p 1935:1935 -p 1985:1985 -p 8080:8080  -v /resource/junk/Demo/live:/video ossrs/srs:3```，-it后跟容器名称
 进入容器目录```docker exec -it f8003731137a  /bin/bash```，-it后跟容器名称
 [配置链接](https://www.jianshu.com/p/4b628b3badae)
 
 ### 录制功能
-修改srs.conf
+修改srs.conf，添加一个dvr字段即可，srs.conf 在conf文件夹下
 ```
 dvr {
         enabled         on;
         dvr_apply       all;
-        dvr_plan        segment;
+        dvr_plan        session;
         dvr_path        ../video/[stream].[timestamp].flv;
         dvr_duration    30;
         dvr_wait_keyframe       on;
@@ -44,14 +45,8 @@ dvr {
 在容器内部```./objs/srs -c http-api.conf```启动服务器
 
 ## 3.拉流观看
-``` ./watch/flv.html```
-
-
-
-
-
-
-
+前端在```./push/ustc-live```下，用 react hooks + flv.js + antd 编写
+启动：cd到前端根目录，```npm install``，然后```npm start```即可，打包编译```npm build```
 
 
 

@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-
+*.mp4
+node_modules
 # Log file
 *.log
 
