@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>上大分了兄弟们</title>
+    <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
+    <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js" type="text/javascript"></script>
+    <!-- videojs-contrib-hls 用于在电脑端播放 如果只需手机播放可以不引入 -->
+</head>
+<body>
+    <style>
+        body{
+            margin:0 auto;
+        }
+        p{
+            margin: 3px auto;
+            color:#aaa;
+            text-align: center;
+        }
+        .video-js .vjs-tech {position: relative !important;}
+    </style>
+    <div>
+        
+        <video id="myVideo" class="video-js vjs-default-skin vjs-big-play-centered" autoplay='true' controls preload="auto" data-setup='{}' style='width: 100%;height: auto'>
+            <source id="source" src="http://funx.work:8080/live/livestream.flv" type="rtmp/flv"></source>
+        </video>
+        <p>上大分了兄弟们</p>
+    </div>
+    <!-- <div class="qiehuan" style="width:100px;height: 100px;background: red;margin:0 auto;line-height: 100px;color:#fff;text-align: center">切换视频</div> -->
+</body>
+ 
+<script>
+    // videojs 简单使用
+    var myVideo = videojs('myVideo', {
+        bigPlayButton: true,
+        textTrackDisplay: false,
+        posterImage: false,
+        errorDisplay: false,
+    })
+    myVideo.play()
+</script>
+</html>
